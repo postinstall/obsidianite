@@ -12,7 +12,6 @@ def test_note_creation() -> Note:
     assert note.properties == {"kind": "test"}
     assert note.title == "test"
     assert note.path == "."
-    return note
 
 def test_note_save() -> None:
     """
