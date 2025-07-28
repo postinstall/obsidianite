@@ -1,5 +1,4 @@
 import os
-import pytest
 from pathlib import Path
 from obsidianite import Notes, Note
 
