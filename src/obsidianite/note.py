@@ -9,7 +9,10 @@ class Note:
     """
     Represents a single note with title, content, properties, and file path.
     """
-    def __init__(self, title: str, content: str, properties: dict[str, Any], path: str = "."):
+
+    def __init__(
+        self, title: str, content: str, properties: dict[str, Any], path: str = "."
+    ):
         """
         Initialize a Note instance.
         Args:
@@ -37,30 +40,34 @@ class Note:
         Returns:
             str: JSON string of the note's data.
         """
-        return dumps({
-            "title": self.title,
-            "path": self.path,
-            "properties": self.properties,
-            "content": self.content.strip()
-        }, indent=2, ensure_ascii=False)
+        return dumps(
+            {
+                "title": self.title,
+                "path": self.path,
+                "properties": self.properties,
+                "content": self.content.strip(),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
 
     def render(self) -> str:
-       """
-       Render the note as a markdown string with YAML front matter.
-       Returns:
-           str: Markdown string with YAML front matter and content.
-       """
-       return f"---\n{safe_dump(self.properties).strip()}\n---\n{self.content.strip()}"
+        """
+        Render the note as a markdown string with YAML front matter.
+        Returns:
+            str: Markdown string with YAML front matter and content.
+        """
+        return f"---\n{safe_dump(self.properties).strip()}\n---\n{self.content.strip()}"
 
-    def save(self, filepath: str|None = None) -> None:
+    def save(self, filepath: str | None = None) -> None:
         """
         Save the note to a markdown file.
         Args:
             filepath (str|None, optional): The file path to save the note. If None, uses the note's title and path.
         """
         if not filepath:
-            filepath = os.path.join(self.path,self.title + ".md")
-        with open(filepath,"w", encoding="utf-8") as f:
+            filepath = os.path.join(self.path, self.title + ".md")
+        with open(filepath, "w", encoding="utf-8") as f:
             f.write(self.render())
 
     @classmethod
@@ -81,8 +88,8 @@ class Note:
         parent_path = p.parent.__str__()
         with open(filepath, encoding="utf-8") as f:
             md_text = f.read()
-            if md_text.startswith('---'):
-                parts = md_text.split('---', 2)
+            if md_text.startswith("---"):
+                parts = md_text.split("---", 2)
                 if len(parts) >= 3:
                     _, yaml_block, content = parts
                     properties = safe_load(yaml_block.strip())
