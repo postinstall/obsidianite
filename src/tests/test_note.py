@@ -49,3 +49,14 @@ def test_note_cleanup() -> None:
     """
     os.remove("test.md")
     assert not os.path.exists("test.md")
+
+def test_note_tags() -> None:
+    """
+    Test extracting tags from a Note object.
+    """
+    note = Note("test", "# Test #tag1 #tag2", {"tags": ["tag3"]}, ".")
+    tags = note.tags()
+    assert "tag1" in tags
+    assert "tag2" in tags
+    assert "tag3" in tags
+    assert len(tags) == 3  # Ensure no duplicates
