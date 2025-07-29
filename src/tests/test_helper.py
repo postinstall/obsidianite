@@ -1,5 +1,5 @@
 from obsidianite import insert_string_after_heading, parse_link
-import pytest
+
 
 def test_insert_string_after_heading():
     """
