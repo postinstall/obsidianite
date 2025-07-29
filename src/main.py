@@ -1,4 +1,5 @@
 from obsidianite import Notes
 
 notes = Notes("tests/data/vault")
-print(notes)
+for note in notes.notes:
+  print(note.path, note.title, note.tags())

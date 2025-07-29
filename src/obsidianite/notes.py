@@ -1,7 +1,6 @@
 from pathlib import Path
 from .note import Note
 
-
 class Notes:
     def __init__(self, filepath: str):
         """

@@ -1,4 +1,5 @@
 import os
+import re
 from typing import Any
 from yaml import safe_dump, safe_load
 from pathlib import Path
@@ -50,6 +51,21 @@ class Note:
             indent=2,
             ensure_ascii=False,
         )
+
+    def tags(self) -> list[str]:
+        """
+        Extract tags from the note's properties.
+        Returns:
+            list[str]: List of tags extracted from the properties.
+        """
+        prop_tags = self.properties.get("tags", [])
+        if not isinstance(prop_tags, list):
+            prop_tags = [prop_tags]
+        content_tags = re.findall(r"#([a-z0-9_-]+)", self.content, re.IGNORECASE)
+        all_tags = set(prop_tags) | set(content_tags)
+        return list(all_tags)
+
+
 
     def render(self) -> str:
         """
