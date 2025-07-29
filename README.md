@@ -2,6 +2,8 @@
 
 A simple Python package to process Obsidian Markdown Notes.
 
+[![Test](https://github.com/postinstall/obsidianite/actions/workflows/test.yml/badge.svg)](https://github.com/postinstall/obsidianite/actions/workflows/test.yml)
+
 ## Features
 - Load, process, and save Obsidian-compatible Markdown notes
 - Parse YAML front matter and note content

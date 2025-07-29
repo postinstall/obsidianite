@@ -3,6 +3,23 @@
   <component name="CopilotDiffPersistence">
     <option name="pendingDiffs">
       <map>
+        <entry key="$PROJECT_DIR$/.coveragerc">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/.coveragerc" />
+              <option name="updatedContent" value="[run]&#10;omit =&#10;    src/main.py&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/.gitignore" />
+              <option name="originalContent" value="# Python-generated files&#10;__pycache__/&#10;*.py[oc]&#10;build/&#10;dist/&#10;wheels/&#10;*.egg-info&#10;&#10;# Virtual environments&#10;.venv&#10;&#10;" />
+              <option name="updatedContent" value="# Python-generated files&#10;__pycache__/&#10;*.py[oc]&#10;build/&#10;dist/&#10;wheels/&#10;*.egg-info&#10;&#10;# Virtual environments&#10;.venv&#10;&#10;.coverage" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/README.md">
           <value>
             <PendingDiffInfo>
