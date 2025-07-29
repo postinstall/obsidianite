@@ -25,3 +25,23 @@ class Notes:
             str: A string with each note's dump output separated by newlines.
         """
         return "\n".join([note.dump() for note in self.notes])
+
+    def has_tags(self, tags):
+        """
+        Return a list of notes that contain all of the specified tags.
+        Args:
+            tags (list or set): Tags to filter notes by.
+        Returns:
+            list: Notes that contain all specified tags.
+        """
+        return [note for note in self.notes if set(tags).issubset(set(note.tags()))]
+
+    def has_any_tags(self, tags):
+        """
+        Return a list of notes that contain any of the specified tags.
+        Args:
+            tags (list or set): Tags to filter notes by.
+        Returns:
+            list: Notes that contain at least one of the specified tags.
+        """
+        return [note for note in self.notes if set(tags) & set(note.tags())]

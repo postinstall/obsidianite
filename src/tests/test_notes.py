@@ -12,3 +12,17 @@ def test_notes_creation() -> None:
     assert isinstance(notes.notes, list)
     assert len(notes.notes) == 2
     assert isinstance(notes.notes[0], Note)
+
+
+def test_has_tags_and_has_any_tags():
+    """
+    Test the has_tags and has_any_tags methods of the Notes class.
+    Assumes the test vault contains notes with tags 'test', 'foo', and 'bar'.
+    """
+    notes = Notes(os.path.join(Path(__file__).parent, "data/vault"))
+    notes_with_both = notes.has_tags(['test', 'data'])
+    for note in notes_with_both:
+        assert set(['test', 'data']).issubset(set(note.tags()))
+    notes_with_any = notes.has_any_tags(['test', 'data'])
+    for note in notes_with_any:
+        assert set(['test', 'data']) & set(note.tags())

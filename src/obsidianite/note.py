@@ -86,6 +86,14 @@ class Note:
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(self.render())
 
+    def fullpath(self) -> str:
+        """
+        Get the full file path of the note.
+        Returns:
+            str: Full file path including title and path.
+        """
+        return os.path.join(self.path, self.title + ".md")
+
     @classmethod
     def load(cls, filepath: str) -> "Note":
         """
