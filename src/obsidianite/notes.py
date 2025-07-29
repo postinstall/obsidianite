@@ -55,3 +55,18 @@ class Notes:
             generator: Notes that match all specified properties.
         """
         return [note for note in self.notes if all(note.properties.get(k) == v for k, v in properties.items())]
+
+    def has(self, tags=None, **properties):
+        """
+        Return a list of notes that contain all specified tags and match all specified properties.
+        Args:
+            tags (list or set, optional): Tags to filter notes by. All tags must be present in the note.
+            **properties: Arbitrary keyword arguments representing note properties and their expected values.
+        Returns:
+            list: Notes that match all specified tags and properties.
+        """
+        return [
+            note for note in self.notes
+            if (tags is None or set(tags).issubset(set(note.tags())))
+            and all(note.properties.get(k) == v for k, v in properties.items())
+        ]

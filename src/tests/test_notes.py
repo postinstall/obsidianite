@@ -39,3 +39,16 @@ def test_filter_properties():
     for note in filtered:
         assert note.properties.get("kind") == "test"
     assert notes.filter(foo="bar") == []
+
+
+def test_has_combined():
+    """
+    Test the has method of the Notes class, which combines tag and property filtering.
+    Checks that only notes with all specified tags and properties are returned.
+    """
+    notes = Notes(os.path.join(Path(__file__).parent, "data/vault"))
+    filtered = notes.has(tags=["test"], kind="test")
+    for note in filtered:
+        assert "test" in note.tags()
+        assert note.properties.get("kind") == "test"
+    assert notes.has(tags=["notag"], foo="bar") == []

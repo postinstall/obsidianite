@@ -66,7 +66,6 @@ class Note:
         return list(all_tags)
 
 
-
     def render(self) -> str:
         """
         Render the note as a markdown string with YAML front matter.
