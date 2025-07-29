@@ -45,3 +45,13 @@ class Notes:
             list: Notes that contain at least one of the specified tags.
         """
         return [note for note in self.notes if set(tags) & set(note.tags())]
+
+    def filter(self, **properties):
+        """
+        Return a generator of notes that match all specified properties.
+        Args:
+            **properties: Arbitrary keyword arguments representing note properties and their expected values.
+        Returns:
+            generator: Notes that match all specified properties.
+        """
+        return [note for note in self.notes if all(note.properties.get(k) == v for k, v in properties.items())]

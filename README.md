@@ -44,6 +44,21 @@ print(note.content)
 # Load all notes in a directory
 notes = Notes('path/to/vault')
 print(notes)
+
+# Filter notes by tags (all tags must be present)
+notes_with_tags = notes.has_tags(['project', 'python'])
+for n in notes_with_tags:
+    print(n.title, n.tags())
+
+# Filter notes by any tag (at least one must be present)
+notes_with_any_tag = notes.has_any_tags(['project', 'python'])
+for n in notes_with_any_tag:
+    print(n.title, n.tags())
+
+# Filter notes by properties (e.g., kind="test")
+filtered_notes = list(notes.filter(kind="test"))
+for n in filtered_notes:
+    print(n.title, n.properties)
 ```
 
 ## Project Structure

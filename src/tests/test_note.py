@@ -50,6 +50,7 @@ def test_note_cleanup() -> None:
     os.remove("test.md")
     assert not os.path.exists("test.md")
 
+
 def test_note_tags() -> None:
     """
     Test extracting tags from a Note object.
@@ -60,3 +61,12 @@ def test_note_tags() -> None:
     assert "tag2" in tags
     assert "tag3" in tags
     assert len(tags) == 3  # Ensure no duplicates
+
+
+def test_note_fullpath() -> None:
+    """
+    Test the fullpath method of a Note object.
+    """
+    note = Note("test", "# Test", {}, ".")
+    expected = os.path.join(note.path, note.title + ".md")
+    assert note.fullpath() == expected

@@ -26,3 +26,16 @@ def test_has_tags_and_has_any_tags():
     notes_with_any = notes.has_any_tags(['test', 'data'])
     for note in notes_with_any:
         assert set(['test', 'data']) & set(note.tags())
+
+
+def test_filter_properties():
+    """
+    Test the filter method of the Notes class by filtering for specific properties.
+    Expects that all returned notes have the required properties.
+    Also checks that filtering for a non-existent property returns an empty result.
+    """
+    notes = Notes(os.path.join(Path(__file__).parent, "data/vault"))
+    filtered = notes.filter(kind="test")
+    for note in filtered:
+        assert note.properties.get("kind") == "test"
+    assert notes.filter(foo="bar") == []
