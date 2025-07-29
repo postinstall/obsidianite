@@ -1,4 +1,4 @@
-from obsidianite import Notes, Note, insert_string_after_heading
+from obsidianite import Note, insert_string_after_heading
 
 
 

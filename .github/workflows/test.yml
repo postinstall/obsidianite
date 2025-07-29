@@ -27,3 +27,9 @@ jobs:
 
       - name: Run tests
         run: uv run pytest -v
+
+      - name: Run test coverage
+        run: uv run pytest --cov=src
+
+      - name: Run ruff
+        run: uv run ruff check .
