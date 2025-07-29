@@ -1,6 +1,6 @@
 [project]
 name = "obsidianite"
-version = "0.1.0"
+version = "0.2.0"
 description = "A simple python package to process Obsidian Markdown Notes"
 readme = "README.md"
 authors = [

@@ -1,4 +1,5 @@
-from obsidianite import insert_string_after_heading
+from obsidianite import insert_string_after_heading, parse_link
+import pytest
 
 def test_insert_string_after_heading():
     """
@@ -11,3 +12,9 @@ def test_insert_string_after_heading():
     assert "# Title\nParagraph after title" in result2
     result3 = insert_string_after_heading(content, "### NotThere", "Should not appear")
     assert "Should not appear" not in result3
+
+def test_parse_link():
+    """Test the parse_link function with various Obsidian link formats."""
+    assert parse_link("[[Note]]") == "Note"
+    assert parse_link("[[Note|Alias]]") == "Alias"
+    assert parse_link("No links here") == "No links here"
